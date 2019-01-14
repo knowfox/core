@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('core::layouts.app')
 
-@inject('picture', 'Knowfox\Services\PictureService')
+@inject('picture', 'Knowfox\Core\Services\PictureService')
 
 @section('main-content')
 
@@ -26,11 +26,11 @@
 
     <main id="app" class="container dropzone">
 
-        @include('partials.concept-view-page-header')
+        @include('core::partials.concept-view-page-header')
 
         <div class="dropzone-previews"></div>
 
-        @include('partials.view-tabs', ['active' => 'view'])
+        @include('core::partials.view-tabs', ['active' => 'view'])
 
         @section('full-content')
 
@@ -43,17 +43,17 @@
 
                         <section class="kids">
                             @if ($concept->type == 'book list' || !empty($concept->config->sort) && $concept->config->sort == 'alpha')
-                                @include('partials.alpha-nav')
+                                @include('core::partials.alpha-nav')
                             @endif
 
                             <table class="table">
                                 @section('kids-header')
-                                    @include('partials.table-header')
+                                    @include('core::partials.table-header')
                                 @show
                                 @section('kids-body')
                                     <tbody>
                                     @foreach ($children as $child)
-                                        @include('partials.table-row', ['concept' => $child])
+                                        @include('core::partials.table-row', ['concept' => $child])
                                     @endforeach
                                     </tbody>
                                 @show
@@ -195,7 +195,7 @@
                     <h4 class="modal-title" id="form-label">Edit "{{$concept->title}}"</h4>
                 </div>
                 <div class="modal-body">
-                    @include('partials.concept-edit-form')
+                    @include('core::partials.concept-edit-form')
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

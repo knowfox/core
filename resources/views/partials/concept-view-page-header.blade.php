@@ -114,6 +114,6 @@
         @endif
     </p>
 
-    @include('partials.messages')
+    @include('core::partials.messages')
 
 </section>
