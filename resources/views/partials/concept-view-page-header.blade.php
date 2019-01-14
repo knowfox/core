@@ -1,17 +1,19 @@
 <section class="page-header">
 
-    <ol class="breadcrumb">
-        <li><a href="{{route('concept.index')}}">Concepts</a></li>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('concept.index')}}">Concepts</a></li>
 
-        @foreach ($concept->ancestors()->get() as $ancestor)
-            <li><a href="{{route('concept.show', ['concept' => $ancestor])}}">
-                    {{$ancestor->title}}
-                </a>
-            </li>
-        @endforeach
+            @foreach ($concept->ancestors()->get() as $ancestor)
+                <li class="breadcrumb-item"><a href="{{route('concept.show', ['concept' => $ancestor])}}">
+                        {{$ancestor->title}}
+                    </a>
+                </li>
+            @endforeach
 
-        <li class="active">{{$concept->title}}</li>
-    </ol>
+            <li class="breadcrumb-item active">{{$concept->title}}</li>
+        </ol>
+    </nav>
 
     @if ($can_update)
 

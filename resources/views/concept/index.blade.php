@@ -6,9 +6,11 @@
 
         <section class="page-header">
 
-            <ol class="breadcrumb">
-                <li class="active">Concepts</li>
-            </ol>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active">Concepts</li>
+                </ol>
+            </nav>
 
             <a class="btn btn-default pull-right" href="{{route('concept.create')}}"><i class="glyphicon glyphicon-plus-sign"></i> New concept</a>
             <h1>{{ $page_title }} <small>{!! $sub_title !!}</small></h1>
