@@ -12,7 +12,7 @@
                 </ol>
             </nav>
 
-            <a class="btn btn-default pull-right" href="{{route('concept.create')}}"><i class="glyphicon glyphicon-plus-sign"></i> New concept</a>
+            <a class="btn btn-default float-right" href="{{route('concept.create')}}"><i class="glyphicon glyphicon-plus-sign"></i> New concept</a>
             <h1>{{ $page_title }} <small>{!! $sub_title !!}</small></h1>
 
             @include('core::partials.messages')

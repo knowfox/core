@@ -17,63 +17,48 @@
 
     @if ($can_update)
 
-        <div class="btn-group pull-right">
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#concept-edit-form">
-                <i class="glyphicon glyphicon-edit"></i> Edit concept
+        <div class="btn-group float-right" role="group">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#concept-edit-form">
+            <i class="fas fa-edit"></i> Edit concept
             </button>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+            <div class="dropdown-menu">
                 @if ($is_owner)
-                    <li>
-                        <a href="#" data-toggle="modal" data-target="#concept-share-form">
-                            <i class="glyphicon glyphicon-share"></i> Share
-                            @if ($concept->shares->count() > 0)
-                                <span class="badge">{{ $concept->shares->count() }}</span>
-                            @endif
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{ route('attachment.index', [$concept]) }}">
-                            <i class="glyphicon glyphicon-paperclip"></i> Attachments
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{ route('concept.slides', [$concept]) }}">
-                            <i class="glyphicon glyphicon-blackboard"></i> Slides
-                        </a>
-                    </li>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#concept-share-form">
+                    <i class="fas fa-share-alt"></i> Share
+                        @if ($concept->shares->count() > 0)
+                            <span class="badge">{{ $concept->shares->count() }}</span>
+                        @endif
+                    </a>
+                    <a class="dropdown-item" href="{{ route('attachment.index', [$concept]) }}">
+                    <i class="fas fa-paperclip"></i> Attachments
+                    </a>
+                    <a class="dropdown-item" href="{{ route('concept.slides', [$concept]) }}">
+                    <i class="fas fa-chart-line"></i> Slides
+                    </a>
 
                     @if (!empty(env('WEBSITE_' . $concept->id)))
-                        <li>
-                            <a href="{{route('website.publish', [$concept])}}"
-                               onclick="event.preventDefault(); document.getElementById('publish-form').submit();"><i class="glyphicon glyphicon-globe"></i> Publish Website</a>
+                        <a class="dropdown-item" href="{{route('website.publish', [$concept])}}"
+                            onclick="event.preventDefault(); document.getElementById('publish-form').submit();"><i class="fas fa-globe"></i> Publish Website</a>
 
-                            <form id="publish-form" action="{{route('website.publish', [$concept])}}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    @endif
-                @endif
-                <li><a href="{{route('concept.create', ['parent_id' => $concept->id])}}"><i class="glyphicon glyphicon-plus-sign"></i> Add child</a></li>
-                <li><a href="{{route('concept.versions', [$concept])}}"><i class="glyphicon glyphicon-time"></i> Versions</a></li>
-                @if ($is_owner)
-                    <li role="separator" class="divider"></li>
-                    <li>
-                        <a href="{{route('concept.destroy', [$concept])}}"
-                           onclick="event.preventDefault(); document.getElementById('delete-form').submit();"><i class="glyphicon glyphicon-remove"></i> Delete</a>
-
-                        <form id="delete-form" action="{{route('concept.destroy', [$concept])}}" method="POST" style="display: none;">
-                            <input type="hidden" name="_method" value="DELETE">
+                        <form id="publish-form" action="{{route('website.publish', [$concept])}}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>
+                    @endif
                 @endif
-            </ul>
+                <a class="dropdown-item" href="{{route('concept.create', ['parent_id' => $concept->id])}}"><i class="fas fa-sitemap"></i> Add child</a>
+                <a class="dropdown-item" href="{{route('concept.versions', [$concept])}}"><i class="fas fa-code-branch"></i> Versions</a>
+                @if ($is_owner)
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{route('concept.destroy', [$concept])}}"
+                        onclick="event.preventDefault(); document.getElementById('delete-form').submit();"><i class="fas fa-minus-circle"></i> Delete</a>
+
+                    <form id="delete-form" action="{{route('concept.destroy', [$concept])}}" method="POST" style="display: none;">
+                        <input type="hidden" name="_method" value="DELETE">
+                        {{ csrf_field() }}
+                    </form>
+                @endif
+            </div>
         </div>
 
     @endif
