@@ -1,6 +1,6 @@
 <?php
 
-namespace Knowfox\ViewComposers;
+namespace Knowfox\Core\ViewComposers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;

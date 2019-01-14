@@ -1,9 +1,9 @@
 <?php
 
-namespace Knowfox\Http\Controllers;
+namespace Knowfox\Core\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Knowfox\Models\Concept;
+use Knowfox\Core\Models\Concept;
 use Knowfox\Jobs\PublishWebsite;
 
 class WebsiteController extends Controller

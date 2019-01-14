@@ -64,17 +64,17 @@
     @endif
 
     <h1>
-        {{$concept->title}}<small>
+        {{$concept->title}} <small>
         @if ($concept->is_flagged)
-            <i class="glyphicon glyphicon-heart"></i>
+            <i class="fas fa-heart"></i>
         @endif
         @if ($concept->source_url)
             <a href="{{$concept->source_url}}">
-                <i class="glyphicon glyphicon-link"></i>
+                <i class="fas fa-link"></i>
             </a>
         @endif
         @if ($concept->shares->count() > 0)
-            <i style="color:red" class="glyphicon glyphicon-share"></i>
+            <i style="color:red" class="fas fa-share-alt"></i>
         @endif
         </small>
     </h1>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Knowfox\Http;
+namespace Knowfox\Core\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 

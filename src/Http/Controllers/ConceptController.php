@@ -317,7 +317,7 @@ class ConceptController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Knowfox\Models\Concept  $concept
+     * @param  \Knowfox\Core\Models\Concept  $concept
      * @return \Illuminate\Http\Response
      */
     public function edit(Concept $concept)
@@ -372,7 +372,7 @@ class ConceptController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Knowfox\Models\Concept  $concept
+     * @param  \Knowfox\Core\Models\Concept  $concept
      * @return \Illuminate\Http\Response
      */
     public function destroy(Concept $concept)

@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Knowfox\Http\Controllers;
+namespace Knowfox\Core\Http\Controllers;
 
 use Conner\Tagging\Model\Tag;
 use Conner\Tagging\Model\Tagged;
@@ -59,7 +59,7 @@ class TagsController extends Controller
             ->paginate()
             ->appends($request->only(['order', 'dir']));
 
-        return view('tag.cloud', [
+        return view('core::tag.cloud', [
             'page_title' => 'Tags',
             'sub_title' => $tags->firstItem() . ' &hellip; ' . $tags->lastItem() . ' of ' . $tags->total(),
             'tags' => $tags,

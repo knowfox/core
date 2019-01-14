@@ -1,10 +1,10 @@
 <?php
 
-namespace Knowfox\Http\Controllers;
+namespace Knowfox\Core\Http\Controllers;
 
 use Knowfox\Models\Attachment;
 use Illuminate\Http\Request;
-use Knowfox\Models\Concept;
+use Knowfox\Core\Models\Concept;
 
 class AttachmentController extends Controller
 {

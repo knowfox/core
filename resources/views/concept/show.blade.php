@@ -59,7 +59,7 @@
                                 @show
                             </table>
 
-                            <div class="text-center">{{$children}}</div>
+                            <div class="d-flex justify-content-center">{{$children}}</div>
                         </section>
                     @endif
 
@@ -171,7 +171,7 @@
                                 @endforeach
                             </ul>
 
-                            <div class="text-center">
+                            <div class="d-flex justify-content-center">
                                 {{ $siblings->links('pagination::simple-default') }}
                             </div>
 

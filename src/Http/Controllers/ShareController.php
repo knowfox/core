@@ -16,9 +16,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Knowfox\Http\Controllers;
+namespace Knowfox\Core\Http\Controllers;
 
-use Knowfox\Models\Concept;
+use Knowfox\Core\Models\Concept;
 use Knowfox\Models\EmailLogin;
 use Knowfox\User;
 use Knowfox\Jobs\SendInviteMail;

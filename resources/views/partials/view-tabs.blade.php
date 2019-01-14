@@ -17,6 +17,7 @@ if (!empty($concept->config->epub)) {
         $target = ' target="_blank"';
     }
     ?>
-    <li role="presentation"{!! $active == $tab ? ' class="active"' : '' !!}><a{!! $target !!} href="{{$tab}}" role="tab">{{$label}}</a></li>
+    <li role="presentation" class="nav-item">
+        <a{!! $target !!} class="nav-link{{ $active == $tab ? ' active' : '' }}" href="{{$tab}}" role="tab">{{$label}}</a></li>
 @endforeach
 </ul>

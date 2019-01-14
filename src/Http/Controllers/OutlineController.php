@@ -16,11 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Knowfox\Http\Controllers;
+namespace Knowfox\Core\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Knowfox\Models\Concept;
+use Knowfox\Core\Models\Concept;
 use Knowfox\Services\OutlineService;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use vipnytt\OPMLParser;

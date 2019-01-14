@@ -4,19 +4,16 @@
     @endif
     <div class="input-group">
         <input id="search-input" type="search" name="q" class="form-control" value="{{ $search_term ?? '' }}" placeholder="Search {{ $concept->title ?? '' }}">
-        <div class="input-group-btn">
-            <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
             @if (!empty($concept))
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                <div class="dropdown-menu">
                     @foreach ($concept->ancestors()->get()->reverse() as $ancestor)
-                        <li><a class="search-context" href="#" data-id="{{ $ancestor->id }}">&hellip; {{ $ancestor->title }}</a></li>
+                        <a class="dropdown-item search-context" href="#" data-id="{{ $ancestor->id }}">&hellip; {{ $ancestor->title }}</a>
                     @endforeach
-                    <li><a class="search-context" href="#">&hellip; globally</a></li>
-                </ul>
+                    <a class="dropdown-item search-context" href="#">&hellip; globally</a>
+                </div>
             @endif
         </div>
     </div><!-- /input-group -->

@@ -1,6 +1,6 @@
 <?php
 
-namespace Knowfox\Http\Controllers;
+namespace Knowfox\Core\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Knowfox\Models\Item;

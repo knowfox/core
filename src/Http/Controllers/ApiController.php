@@ -1,10 +1,10 @@
 <?php
 
-namespace Knowfox\Http\Controllers;
+namespace Knowfox\Core\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Knowfox\Models\Concept;
-use Knowfox\Http\Resources\Concept as ConceptResource;
+use Knowfox\Core\Models\Concept;
+use Knowfox\Core\Http\Resources\Concept as ConceptResource;
 
 class ApiController extends Controller
 {

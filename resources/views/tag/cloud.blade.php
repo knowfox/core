@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('core::layouts.app')
 
 @section('content')
 
@@ -10,9 +10,9 @@
                 <li class="active">Tags</li>
             </ol>
 
-            <h1>{{$page_title}} <small>{{$sub_title}}</small></h1>
+            <h1>{{$page_title}} <small>{!! $sub_title !!}</small></h1>
 
-            @include('partials.messages')
+            @include('core::partials.messages')
 
         </section>
 
@@ -45,7 +45,7 @@
                 </tbody>
             </table>
 
-            <div class="text-center">{{ $tags }}</div>
+            <div class="d-flex justify-content-center">{{ $tags }}</div>
         @endif
     </main>
 
