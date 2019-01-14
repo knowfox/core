@@ -170,7 +170,7 @@ class ConceptController extends Controller
                 ->paginate()
                 ->appends($request->except(['page']));
 
-            return view('concept.index', [
+            return view('core::concept.index', [
                 'concepts' => $result,
                 'page_title' => $page_title,
                 'sub_title' => $result->firstItem() . ' &hellip; ' . $result->lastItem() . ' of ' . $result->total(),
@@ -197,7 +197,7 @@ class ConceptController extends Controller
             $concept->appendToNode($parent);
         }
 
-        return view('concept.create', [
+        return view('core::concept.create', [
             'concept' => $concept,
         ]);
     }
@@ -452,7 +452,7 @@ class ConceptController extends Controller
 
     public function versions(Request $request, Concept $concept)
     {
-        return view('concept.versions', [
+        return view('core::concept.versions', [
             'concept' => $concept,
             'is_owner' => $concept->owner_id == $request->user()->id,
             'can_update' => $request->user()->can('update', $concept),

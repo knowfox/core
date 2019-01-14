@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('core::layouts.app')
 
 @section('content')
 
@@ -11,9 +11,9 @@
             </ol>
 
             <a class="btn btn-default pull-right" href="{{route('concept.create')}}"><i class="glyphicon glyphicon-plus-sign"></i> New concept</a>
-            <h1>{{$page_title}} <small>{{$sub_title}}</small></h1>
+            <h1>{{ $page_title }} <small>{!! $sub_title !!}</small></h1>
 
-            @include('partials.messages')
+            @include('core::partials.messages')
 
         </section>
 
@@ -22,10 +22,10 @@
         @else
 
             <table class="table">
-                @include('partials.table-header')
+                @include('core::partials.table-header')
                 <tbody>
                 @foreach ($concepts as $concept)
-                    @include('partials.table-row')
+                    @include('core::partials.table-row')
                 @endforeach
                 </tbody>
             </table>

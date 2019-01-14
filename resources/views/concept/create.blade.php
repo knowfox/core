@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('core::layouts.app')
 
 @section('content')
 
@@ -7,14 +7,14 @@
         <section class="page-header">
             <h1>Create {{$concept->parent_id ? 'sub-' : ''}}concept</h1>
 
-            @include('partials.messages')
+            @include('core::partials.messages')
 
         </section>
 
         <form action="{{route('concept.store')}}" enctype="multipart/form-data" method="POST">
             {{csrf_field()}}
 
-            @include('partials.concept-edit-form')
+            @include('core::partials.concept-edit-form')
 
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
