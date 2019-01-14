@@ -34,7 +34,7 @@
                 </div>
             </li>
 
-            <li class="nav-item"><a class="nav-link" href="{{ route('journal') }}"><i class="glyphicon glyphicon-grain"></i> {{ strftime('%Y-%m-%d') }}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('journal') }}"><i class="fa fa-crosshairs"></i> {{ strftime('%Y-%m-%d') }}</a></li>
         @endif
         </ul>
 

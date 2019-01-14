@@ -48,7 +48,7 @@
                 | <a href="https://knowfox.com/presentation/47d6c8de/013c/11e7/8a8c/56847afe9799/index.html">Features</a>
                 | <a href="https://github.com/oschettler/knowfox/wiki">Getting started</a>
                 | <a href="https://github.com/oschettler/knowfox/issues">Open issues</a>
-                | <a href="https://github.com/oschettler/knowfox" title="Knowfox is OpenSource. Download it on Github"><img style="height:16px" src="/img/github-32px.png"> OpenSource</a>
+                | <a href="https://github.com/oschettler/knowfox" title="Knowfox is OpenSource. Download it on Github"><i class="fab fa-github"></i> OpenSource</a>
             </p>
         </div>
     </footer>
