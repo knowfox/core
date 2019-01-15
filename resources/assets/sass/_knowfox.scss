@@ -1,36 +1,32 @@
+/**
+ */
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
 
-// Fonts
-//@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-@import url(https://cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css);
-@import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-
-
-// Variables
-@import "variables";
-
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
+/**
 // SimpleMDE
-@import "node_modules/simplemde/dist/simplemde.min";
+@import "~simplemde/dist/simplemde.min";
 
 // Selectize
-@import "node_modules/selectize/dist/css/selectize";
-@import "node_modules/selectize/dist/css/selectize.bootstrap3";
+@import "~selectize/dist/css/selectize";
+@import "~selectize/dist/css/selectize.bootstrap3";
 
-@import "node_modules/dropzone/dist/min/dropzone.min";
+@import "~dropzone/dist/min/dropzone.min";
 
-@import "node_modules/jquery-ui/themes/base/autocomplete";
+@import "~jquery-ui/themes/base/autocomplete";
 
-@import "node_modules/jquery-resizable/resizable";
+@import "~jquery-resizable/resizable";
 
-@import "node_modules/featherlight/release/featherlight.min";
+@import "~featherlight/release/featherlight.min";
 
-@import "node_modules/jqtree/jqtree.scss";
+@import "~jqtree/jqtree.scss";
 
-@import "node_modules/snackbar/dist/snackbar";
+@import "~snackbar/dist/snackbar";
 
-@import 'node_modules/v-calendar/lib/v-calendar.min';
+@import '~v-calendar/lib/v-calendar.min';
+*/
 
 html {
     background: url('/img/background.jpg') no-repeat center center fixed;
@@ -121,7 +117,7 @@ ul.ui-autocomplete {
     padding: 0 12px;
 }
 
-@media (min-width: $screen-sm-min) {
+@include media-breakpoint-up(sm) {
     .not-home .collapse.navbar-collapse {
         display: flex !important;
     }
@@ -135,7 +131,7 @@ ul.ui-autocomplete {
     }
 }
 
-@media (max-width: $screen-sm-max) {
+@include media-breakpoint-down(sm) {
     .desktop-only {
         display: none;
     }
@@ -228,6 +224,7 @@ ul.persons {
     padding-left: 8px;
 }
 
+/** @todo Port to bootstrap 4
 .card {
     @extend .thumbnail;
     padding: 0;
@@ -247,6 +244,7 @@ ul.persons {
     width: 100%;
     margin-bottom: .75rem;
 }
+*/
 
 .CodeMirror,
 .CodeMirror-scroll {
