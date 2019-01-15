@@ -62,7 +62,7 @@ class ServiceProvider extends IlluminateServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'core');
         $this->mapWebRoutes();
-        $this->mapApiRoutes();
+        //$this->mapApiRoutes();
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'core');
 
         $this->publishes([

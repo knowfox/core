@@ -55,7 +55,7 @@
                         <td width="50%">
                             {!! $item->title !!}
                             @foreach ($item->tags as $tag)
-                                <a href="{{route('item.index', ['tag' => $tag->slug])}}" class="label label-default">{{$tag->name}}</a>
+                                <a href="{{route('item.index', ['tag' => $tag->slug])}}" class="badge badge-secondary">{{$tag->name}}</a>
                             @endforeach
                         </td>
                     </tr>

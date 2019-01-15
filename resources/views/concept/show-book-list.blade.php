@@ -29,7 +29,7 @@
                 @endif
                 <?php $sep = '<br>'; ?>
                 @foreach ($book->tags as $tag)
-                    {!! $sep !!}<a href="{{route('concept.index', ['tag' => $tag->slug])}}" class="label label-default">{{$tag->name}}</a>
+                    {!! $sep !!}<a href="{{route('concept.index', ['tag' => $tag->slug])}}" class="badge badge-secondary">{{$tag->name}}</a>
                     <?php $sep = ''; ?>
                 @endforeach
             </td>

@@ -7,7 +7,7 @@
         <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
             @if (!empty($concept))
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                 <div class="dropdown-menu">
                     @foreach ($concept->ancestors()->get()->reverse() as $ancestor)
                         <a class="dropdown-item search-context" href="#" data-id="{{ $ancestor->id }}">&hellip; {{ $ancestor->title }}</a>

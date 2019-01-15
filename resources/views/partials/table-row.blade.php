@@ -27,10 +27,10 @@
 <tr>
     <td>
         @if ($concept->type != 'concept')
-            <span class="label label-info">{{ucfirst($concept->type)}}</span>
+            <span class="badge badge-primary">{{ucfirst($concept->type)}}</span>
         @endif
         @foreach ($concept->tags as $tag)
-            <a href="{{route('concept.index', ['tag' => $tag->slug])}}" class="label label-default">{{$tag->name}}</a>
+            <a href="{{route('concept.index', ['tag' => $tag->slug])}}" class="badge badge-secondary">{{$tag->name}}</a>
         @endforeach
     </td>
     <td>{{$concept->getDescendantCount()}}</td>

@@ -91,12 +91,12 @@
         viewed {{$concept->viewed_count}} time{{$concept->viewed_count > 1 ? 's' : ''}}.
 
         @if ($concept->type != 'concept')
-            <span class="label label-info">{{ucfirst($concept->type)}}</span>
+            <span class="badge badge-primary">{{ucfirst($concept->type)}}</span>
         @endif
 
         @if ($concept->tags->count())
             @foreach ($concept->tags as $tag)
-                <a class="label label-default" href="{{route('concept.index', ['tag' => $tag->slug])}}">{{$tag->name}}</a>
+                <a class="badge badge-secondary" href="{{route('concept.index', ['tag' => $tag->slug])}}">{{$tag->name}}</a>
             @endforeach
         @endif
     </p>
