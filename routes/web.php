@@ -15,19 +15,12 @@ Route::get('/', function () {
     if (Auth::check()) {
         return redirect()->route('home');
     }
-    return view('welcome');
+    return view('core::welcome');
 });
 
 Route::get('cancel/{what}/{email}', [
     'as' => 'cancel',
     'uses' => 'UserController@cancel',
-]);
-
-Auth::routes();
-
-Route::get('auth/email-authenticate/{token}/{cid?}', [
-    'as' => 'auth.email-authenticate',
-    'uses' => 'Auth\LoginController@authenticateEmail'
 ]);
 
 Route::get('/home', [
