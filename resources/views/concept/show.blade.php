@@ -186,37 +186,37 @@
 
     </main>
 
-    <div class="modal fade" id="concept-edit-form" role="dialog" aria-labelledby="form-label">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="concept-edit-form" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
             <form class="modal-content" enctype="multipart/form-data" action="{{route('concept.update', ['concept' => $concept])}}" method="POST">
                 {{csrf_field()}}
                 <div class="modal-header">
+                    <h5 class="modal-title" id="form-label">Edit "{{$concept->title}}"</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="form-label">Edit "{{$concept->title}}"</h4>
                 </div>
                 <div class="modal-body">
                     @include('core::partials.concept-edit-form')
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <div class="modal fade" id="concept-share-form" role="dialog" aria-labelledby="form-label">
+    <div class="modal fade" id="concept-share-form" role="dialog">
         <div class="modal-dialog" role="document">
             <form v-on:submit.prevent="updateShares" class="modal-content" action="{{route('share', [$concept])}}" method="POST">
                 <div class="modal-header">
+                    <h5 class="modal-title" id="form-label">Share "{{$concept->title}}"</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="form-label">Share "{{$concept->title}}"</h4>
                 </div>
                 <div class="modal-body">
                     <shares :shares="shares"></shares>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form><!-- /.modal-content -->

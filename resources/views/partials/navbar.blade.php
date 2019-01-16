@@ -24,7 +24,7 @@
                         <a class="dropdown-item" href="{{route('concept.shares')}}">Shared by me</a>
                         <a class="dropdown-item" href="{{route('concept.shared')}}">Shared with me</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{route('concept.create')}}"><i class="glyphicon glyphicon-plus-sign"></i> New concept</a>
+                        <a class="dropdown-item" href="{{route('concept.create')}}"><i class="fas fa-plus-circle"></i> New concept</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

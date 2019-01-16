@@ -4,8 +4,6 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
-require('./bootstrap');
 require('selectize');
 
 var SimpleMDE = require('simplemde/dist/simplemde.min');
@@ -38,6 +36,13 @@ Vue.component(
     require('./components/passport/PersonalAccessTokens.vue')
 );
 
+/** @todo Fix this:
+ * [Vue warn]: Failed to mount component: template or render function not defined.
+
+found in
+
+---> <MiniCale
+ * 
 import VCalendar from 'v-calendar';
 Vue.use(VCalendar, {
     firstDayOfWeek: 2
@@ -47,6 +52,7 @@ Vue.component(
     'mini-calendar',
     require('./components/Calendar.vue')
 );
+*/
 
 window.markdownEditor = function () {
     var simplemde = new SimpleMDE({

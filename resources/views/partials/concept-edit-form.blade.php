@@ -17,11 +17,11 @@
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#taxonomy" aria-controls="taxonomy" role="tab" data-toggle="tab">Taxonomy</a></li>
-        <li role="presentation"><a href="#summary" aria-controls="summary" role="tab" data-toggle="tab">Summary</a></li>
-        <li role="presentation"><a href="#links" aria-controls="links" role="tab" data-toggle="tab">Links</a></li>
-        <li role="presentation"><a href="#relations" aria-controls="relations" role="tab" data-toggle="tab">Relations</a></li>
-        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#taxonomy" aria-controls="taxonomy" role="tab" data-toggle="tab">Taxonomy</a></li>
+        <li class="nav-item"><a class="nav-link" href="#summary" aria-controls="summary" role="tab" data-toggle="tab">Summary</a></li>
+        <li class="nav-item"><a class="nav-link" href="#links" aria-controls="links" role="tab" data-toggle="tab">Links</a></li>
+        <li class="nav-item"><a class="nav-link" href="#relations" aria-controls="relations" role="tab" data-toggle="tab">Relations</a></li>
+        <li class="nav-item"><a class="nav-link" href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
     </ul>
 
     <!-- Tab panes -->
