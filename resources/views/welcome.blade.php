@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Tinkerthon</title>
+        <title>{{ env('APP_NAME') }}</title>
 
         <meta name="description" content="Personal knowledge management">
         <meta name="google-site-verification" content="{{env('GOOGLE_SITE')}}" />
@@ -100,7 +100,7 @@
                 @include('core::partials.messages')
 
                 <div class="title m-b-md">
-                    Knowfox
+                {{ env('APP_NAME') }}
                 </div>
 
                 <div class="links">
