@@ -1,3 +1,3 @@
 @yield('content')
 
-@include('partials.email.footer-plain')
+@include('core::partials.email.footer-plain')

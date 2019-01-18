@@ -1,4 +1,4 @@
-@extends('concept.show')
+@extends('core::concept.show')
 
 @section('full-content')
 

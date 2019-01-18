@@ -1,4 +1,4 @@
-@extends('layouts.email')
+@extends('core::layouts.email')
 
 @section('content')
 Hello {{$user->name}},
