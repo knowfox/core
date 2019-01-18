@@ -63,11 +63,11 @@ class ServiceProvider extends IlluminateServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'core');
         $this->mapWebRoutes();
         //$this->mapApiRoutes();
-        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'core');
+        //$this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'core');
 
         $this->publishes([
             __DIR__ . '/../knowfox.php' => config_path('knowfox.php'),
-            __DIR__ . '/../lang' => resource_path('lang/vendor/knowfox'),
+            //__DIR__ . '/../lang' => resource_path('lang/vendor/knowfox'),
         ]);
         
         Concept::observe(ConceptObserver::class);
