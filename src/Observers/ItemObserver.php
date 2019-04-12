@@ -1,6 +1,6 @@
 <?php
 
-namespace Knowfox\Observers;
+namespace Knowfox\Core\Observers;
 
 use Knowfox\Models\Item;
 
