@@ -1,6 +1,6 @@
 <?php
 
-namespace Knowfox\Listeners;
+namespace Knowfox\Core\Listeners;
 
 use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Queue\InteractsWithQueue;

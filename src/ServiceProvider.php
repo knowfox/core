@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Event;
 
 use Knowfox\Core\Models\Concept;
 use Knowfox\Core\Models\Item;
@@ -14,6 +16,7 @@ use Knowfox\Core\Observers\ItemObserver;
 use Knowfox\Core\Policies\ConceptPolicy;
 use Knowfox\Core\ViewComposers\AlphaIndexComposer;
 use Knowfox\Core\ViewComposers\ImpactMapComposer;
+use Knowfox\Core\Listeners\NewUserListener;
 
 class ServiceProvider extends IlluminateServiceProvider
 {
@@ -74,8 +77,10 @@ class ServiceProvider extends IlluminateServiceProvider
         Item::observe(ItemObserver::class);
         View::composer('core::concept.show-impact-map', ImpactMapComposer::class);
         View::composer('core::partials.alpha-nav', AlphaIndexComposer::class);
+        Event::listen(Registered::class, NewUserListener::class);
 
         // Because mpociot/versionable does not specify it
+        // @TODO Does this even work?
         $this->loadMigrationsFrom(__DIR__ . '/../../vendor/mpociot/versionable/src/migrations');
     }
 
@@ -94,5 +99,9 @@ class ServiceProvider extends IlluminateServiceProvider
     public function register()
     {
         $this->registerPolicies();
+        
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/knowfox.php', 'knowfox'
+        );
     }
 }
