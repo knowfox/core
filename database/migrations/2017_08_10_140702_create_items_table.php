@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('title');
             $table->integer('concept_id')->unsigned();
             $table->foreign('concept_id')->references('id')->on('concepts');
-            $table->integer('owner_id')->unsigned();
+            $table->bigInteger('owner_id')->unsigned();
             $table->foreign('owner_id')->references('id')->on('users');
             $table->boolean('is_done')->default(false)->index();
             $table->date('due_at')->nullable()->index();

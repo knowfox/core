@@ -30,7 +30,7 @@ class CreateConceptsTable extends Migration
 
             $table->string('source_url')->nullable();
 
-            $table->integer('owner_id')->unsigned();
+            $table->bigInteger('owner_id')->unsigned();
             $table->foreign('owner_id')->references('id')->on('users');
 
             $table->timestamps();
