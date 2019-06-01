@@ -6,25 +6,21 @@ use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Event;
 
 use Knowfox\Core\Models\Concept;
 use Knowfox\Core\Models\Item;
 use Knowfox\Core\Observers\ConceptObserver;
-use Knowfox\Core\Observers\ItemObserver;
 use Knowfox\Core\Policies\ConceptPolicy;
 use Knowfox\Core\ViewComposers\AlphaIndexComposer;
-use Knowfox\Core\ViewComposers\ImpactMapComposer;
+use Knowfox\Core\Listeners\AuthListener;
 use Knowfox\Core\Listeners\NewUserListener;
 
 class ServiceProvider extends IlluminateServiceProvider
 {
     protected $namespace = 'Knowfox\Core\Http\Controllers';
-
-    protected $policies = [
-        Concept::class => ConceptPolicy::class,
-    ];
 
     /**
      * Define the "web" routes for the application.
@@ -70,25 +66,23 @@ class ServiceProvider extends IlluminateServiceProvider
 
         $this->publishes([
             __DIR__ . '/../knowfox.php' => config_path('knowfox.php'),
+            __DIR__ . '/../public/img/background.jpg' => public_path('img/background.jpg'),
+            __DIR__ . '/../public/img/github-32px.png' => public_path('img/github-32px.png'),
+            __DIR__ . '/../public/img/knowfox-icon.ico' => public_path('img/knowfox-icon.ico'),
+            __DIR__ . '/../public/img/knowfox-icon.png' => public_path('img/knowfox-icon.png'),
             //__DIR__ . '/../lang' => resource_path('lang/vendor/knowfox'),
         ]);
         
         Concept::observe(ConceptObserver::class);
-        Item::observe(ItemObserver::class);
-        View::composer('core::concept.show-impact-map', ImpactMapComposer::class);
+
         View::composer('core::partials.alpha-nav', AlphaIndexComposer::class);
+
+        Event::listen(Authenticated::class, AuthListener::class);
         Event::listen(Registered::class, NewUserListener::class);
 
         // Because mpociot/versionable does not specify it
         // @TODO Does this even work?
         $this->loadMigrationsFrom(__DIR__ . '/../../vendor/mpociot/versionable/src/migrations');
-    }
-
-    protected function registerPolicies()
-    {
-        foreach ($this->policies as $key => $value) {
-            Gate::policy($key, $value);
-        }
     }
 
     /**
@@ -98,7 +92,7 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     public function register()
     {
-        $this->registerPolicies();
+        Gate::policy(Concept::class, ConceptPolicy::class);
         
         $this->mergeConfigFrom(
             __DIR__ . '/../config/knowfox.php', 'knowfox'

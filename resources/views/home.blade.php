@@ -1,7 +1,7 @@
 @extends('core::layouts.app')
 
 @section('content')
-<div class="home container">
+<div id="app" class="home container">
     @include('core::partials.messages')
 
     <div class="row">

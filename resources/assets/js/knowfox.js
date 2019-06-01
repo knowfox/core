@@ -6,9 +6,13 @@
  */
 require('selectize');
 
+/*global Vue*/
+
 var SimpleMDE = require('simplemde/dist/simplemde.min');
 window.Dropzone = require('dropzone');
 
+window.$ = require('jquery');
+window.jQuery = window.$;
 require('jquery-ui/ui/widgets/autocomplete');
 
 require('jquery-resizable/resizable');

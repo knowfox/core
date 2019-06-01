@@ -5,8 +5,9 @@ namespace Knowfox\Core\Listeners;
 use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Knowfox\Models\Concept;
 use Illuminate\Support\Facades\Config;
+
+use Knowfox\Core\Models\Concept;
 
 class AuthListener
 {

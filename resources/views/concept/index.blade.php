@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <main class="container">
+    <main id="app" class="container">
 
         <section class="page-header">
 
