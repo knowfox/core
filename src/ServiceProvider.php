@@ -49,6 +49,14 @@ class ServiceProvider extends IlluminateServiceProvider
 
         $this->loadMigrationsFrom(__DIR__ . '/../migrations');
 
+        /*
+         * mpociot/versionable does not automatically install
+         * its migrations so we do it for them here
+         */
+        $this->loadMigrationsFrom(__DIR__ .
+            '/../../../../vendor/mpociot/versionable/src/migrations');
+
+
         $this->publishes([
             __DIR__ . '/../knowfox.php' => config_path('knowfox.php'),
         ]);
