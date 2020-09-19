@@ -1,53 +1,32 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
-    "type": "project",
-    "repositories": [
+    "name": "knowfox/core",
+    "description": "Knowfox. A personal knowledge management system",
+    "type": "library",
+    "require": {
+        "barryvdh/laravel-cors": "^2.0",
+        "cebe/markdown": "^1.2",
+        "kalnoy/nestedset": "^5.0",
+        "laravel/framework": "^7.0",
+        "mpociot/versionable": "^3.1",
+        "rtconner/laravel-tagging": "^3.2",
+        "doctrine/dbal": "^2.9",
+        "guzzlehttp/guzzle": "^6.0",
+        "ramsey/uuid": "^4.0",
+        "symfony/yaml": "^4.3"
+    },
+    "license": "GPLv3",
+    "authors": [
         {
-            "type": "vcs",
-            "url": "https://github.com/knowfox/entangle"
+            "name": "Olav Schettler",
+            "email": "olav@schettler.net"
         }
     ],
-    "require": {
-    },
-    "require-dev": {
-    },
-    "autoload": {
-        "classmap": [
-            "database"
-        ],
-        "psr-4": {
-            "Knowfox\\": "app/",
-            "Knowfox\\Entangle\\": "packages/knowfox/entangle/src/"
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Knowfox\\Core\\ServiceProvider"
+            ]
         }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "post-root-package-install": [
-            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "php artisan key:generate"
-        ],
-        "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall"
-        ],
-        "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
-        ],
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover"
-        ]
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true
     }
 }

@@ -4,8 +4,8 @@ namespace Knowfox\Core\Services;
 
 use Illuminate\Http\File;
 use Imagick;
-use Knowfox\Models\FileModel;
-use Knowfox\Models\Concept;
+use Knowfox\Core\Models\FileModel;
+use Knowfox\Core\Models\Concept;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use \Illuminate\Http\Response;
 use Illuminate\Support\Str;
@@ -104,7 +104,7 @@ class PictureService
                 break;
 
             default:
-                $config_prefix = 'knowfox.styles.' . $style_name;
+                $config_prefix = 'styles.' . $style_name;
                 $style_width = config($config_prefix . '.width');
                 $style_height = config($config_prefix . '.height');
 
