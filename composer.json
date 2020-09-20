@@ -29,5 +29,10 @@
                 "Knowfox\\Core\\ServiceProvider"
             ]
         }
+    },
+    "autoload": {
+        "psr-4": {
+            "Knowfox\\Core\\": "src/"
+        }
     }
 }
