@@ -1,7 +1,7 @@
 {
     "name": "knowfox/core",
     "description": "Knowfox. A personal knowledge management system",
-    "type": "library",
+    "type": "laravel-package",
     "require": {
         "barryvdh/laravel-cors": "^2.0",
         "cebe/markdown": "^1.2",
