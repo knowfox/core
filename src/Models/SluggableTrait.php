@@ -43,3 +43,4 @@ trait SluggableTrait
     }
 
 }
+
