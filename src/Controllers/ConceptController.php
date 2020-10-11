@@ -24,9 +24,18 @@ use App\Http\Controllers\Controller;
 use Knowfox\Core\Resources\Concept as ConceptResource;
 use Illuminate\Support\Facades\Auth;
 use Knowfox\Core\Services\PictureService;
+use Knowfox\Crud\Services\Crud;
 
 class ConceptController extends Controller
 {
+    protected $crud;
+
+    public function __construct(Crud $crud)
+    {
+        $this->crud = $crud;
+        $this->crud->setup('knowfox.concept');
+    }
+
     public function toplevel(Request $request)
     {
         return $this->index($request, 'toplevel');
@@ -154,7 +163,12 @@ class ConceptController extends Controller
             $item->path .= '/' . $item->title;
         });
 
-        return response()->json($items);
+        if ($request->wantsJson()) {
+            return response()->json($items);
+        }
+        else {
+            return $this->crud->index($request);
+        }
     }
 
     public function show(Concept $concept, Request $request)

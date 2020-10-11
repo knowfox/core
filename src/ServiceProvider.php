@@ -49,7 +49,14 @@ class ServiceProvider extends IlluminateServiceProvider
             ->namespace($this->namespace)
             ->group(__DIR__ . '/../routes/api.php');
 
+        Route::prefix('core')
+            ->middleware('web')
+            ->namespace($this->namespace)
+            ->group(__DIR__ . '/../routes/web.php');
+
         $this->loadMigrationsFrom(__DIR__ . '/../migrations');
+
+        $this->loadViewsFrom(__DIR__ . '/../views', 'core');
 
         /*
          * mpociot/versionable does not automatically install
