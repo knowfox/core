@@ -4,11 +4,17 @@ namespace Knowfox\Core;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
-use Barryvdh\Cors\HandleCors;
+use Fruitcake\Cors\HandleCors;
 use Illuminate\Routing\Middleware\SubstituteBindings;
+
 use Knowfox\Core\Models\Concept;
+use Knowfox\Core\Models\Item;
+use Knowfox\Core\Observers\ConceptObserver;
+use Knowfox\Core\Observers\ItemObserver;
 use Knowfox\Core\Policies\ConceptPolicy;
+
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
 class ServiceProvider extends IlluminateServiceProvider
@@ -36,11 +42,13 @@ class ServiceProvider extends IlluminateServiceProvider
     {
         Gate::policy(Concept::class, ConceptPolicy::class);
 
+        Concept::observe(ConceptObserver::class);
+        Item::observe(ItemObserver::class);
+
         //Route::model('concept', Concept::class);
 
         Route::prefix('api')
             ->middleware([
-                'auth:sanctum',
                 EnsureFrontendRequestsAreStateful::class,
                 'throttle:60,1',
                 HandleCors::class,
@@ -49,14 +57,7 @@ class ServiceProvider extends IlluminateServiceProvider
             ->namespace($this->namespace)
             ->group(__DIR__ . '/../routes/api.php');
 
-        Route::prefix('core')
-            ->middleware('web')
-            ->namespace($this->namespace)
-            ->group(__DIR__ . '/../routes/web.php');
-
         $this->loadMigrationsFrom(__DIR__ . '/../migrations');
-
-        $this->loadViewsFrom(__DIR__ . '/../views', 'core');
 
         /*
          * mpociot/versionable does not automatically install
@@ -64,10 +65,5 @@ class ServiceProvider extends IlluminateServiceProvider
          */
         $this->loadMigrationsFrom(__DIR__ .
             '/../../../../vendor/mpociot/versionable/src/migrations');
-
-
-        $this->publishes([
-            __DIR__ . '/../knowfox.php' => config_path('knowfox.php'),
-        ]);
     }
 }

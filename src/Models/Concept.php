@@ -11,7 +11,7 @@ use cebe\markdown\GithubMarkdown;
 use Conner\Tagging\Taggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Knowfox\Core\Observers\ConceptObserver;
-use App\User;
+use App\Models\User;
 use Symfony\Component\Yaml\Yaml;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;

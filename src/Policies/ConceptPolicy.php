@@ -2,7 +2,7 @@
 
 namespace Knowfox\Core\Policies;
 
-use App\User;
+use App\Models\User;
 use Knowfox\Core\Models\Concept;
 use Illuminate\Auth\Access\HandlesAuthorization;
 

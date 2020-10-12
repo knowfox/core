@@ -3,7 +3,7 @@
     "description": "Knowfox. A personal knowledge management system",
     "type": "laravel-package",
     "require": {
-        "barryvdh/laravel-cors": "^2.0",
+        "fruitcake/laravel-cors": "^2.0",
         "cebe/markdown": "^1.2",
         "kalnoy/nestedset": "^5.0",
         "laravel/framework": "^8.0",
