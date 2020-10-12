@@ -222,7 +222,7 @@ class Concept extends Model {
 
     public function getRenderedConfigAttribute($value)
     {
-        $data = (object)Yaml::parse($this->data || '');
+        $data = (object)($this->data === null ? [] : Yaml::parse($this->data));
         return $this->renderData($data);
     }
 
