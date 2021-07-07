@@ -15,7 +15,8 @@ use App\User;
 use Symfony\Component\Yaml\Yaml;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Mpociot\Versionable\VersionableTrait;
+// @todo add back in once https://github.com/mpociot/versionable/pull/50 has been merged
+//use Mpociot\Versionable\VersionableTrait;
 
 
 class MyGithubMarkdown extends GithubMarkdown
@@ -35,7 +36,7 @@ class Concept extends Model {
     use Taggable;
     use UuidTrait;
     use SluggableTrait;
-    use VersionableTrait;
+    //use VersionableTrait;
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at', 'viewed_at'];
     protected $casts = [
@@ -116,14 +117,18 @@ class Concept extends Model {
     {
         $segments = [];
         $last = 0;
-        preg_match_all('/#([[:alpha:]][\w-]*)/ui', $html, $matches, PREG_SET_ORDER|PREG_OFFSET_CAPTURE);
+        preg_match_all('/(\S*)#([[:alpha:]][\w-]*)/ui', $html, $matches, PREG_SET_ORDER|PREG_OFFSET_CAPTURE);
         foreach ($matches as $match) {
             if ($this->inALink($html, $match[0][1])) {
                 continue;
             }
+            if (in_array($match[1][0], ['&amp;', '&'])) {
+                continue;
+            }
+
             $segments[] = $segment = substr($html, $last, $match[0][1] - $last);
 
-            $tag = $match[1][0];
+            $tag = $match[2][0];
             $last += strlen($segment) + strlen($match[0][0]);
 
             $segments[] = '<a class="label label-default" href="/concepts?tag=' . Str::slug($tag) . '">' . ucfirst($tag) . '</a>';
@@ -137,15 +142,15 @@ class Concept extends Model {
     {
         $segments = [];
         $last = 0;
-        preg_match_all('/@(\w+)/u', $html, $matches, PREG_SET_ORDER|PREG_OFFSET_CAPTURE);
+        preg_match_all('/\W(@(\w+))/u', $html, $matches, PREG_SET_ORDER|PREG_OFFSET_CAPTURE);
         foreach ($matches as $match) {
-            if ($this->inALink($html, $match[0][1])) {
+            if ($this->inALink($html, $match[1][1])) {
                 continue;
             }
-            $segments[] = $segment = substr($html, $last, $match[0][1] - $last);
+            $segments[] = $segment = substr($html, $last, $match[1][1] - $last);
 
-            $person = $match[1][0];
-            $last += strlen($segment) + strlen($match[0][0]);
+            $person = $match[2][0];
+            $last += strlen($segment) + strlen($match[1][0]);
 
             $segments[] = '<a class="label label-info" href="/person/' . $person . '">' . ucfirst($person) . '</a>';
         }
@@ -172,7 +177,7 @@ class Concept extends Model {
 
     public function getConfigAttribute($value)
     {
-        return (object)Yaml::parse($this->data ?? '');
+        return (object)Yaml::parse($this->data ?? '', Yaml::PARSE_DATETIME);
     }
 
     private function renderValue($value)
@@ -217,7 +222,7 @@ class Concept extends Model {
 
     public function getRenderedConfigAttribute($value)
     {
-        $data = (object)Yaml::parse($this->data);
+        $data = (object)Yaml::parse($this->data || '');
         return $this->renderData($data);
     }
 
@@ -313,7 +318,6 @@ class Concept extends Model {
 
                     $instance->setRawAttributes((array) $attributes, true);
                     $instance->setConnection($connection ?: $this->getConnectionName());
-
                     return $instance;
                 }
             }
@@ -364,7 +368,7 @@ class Concept extends Model {
         return $this->hasMany(Item::class);
     }
 
-    public static function journal($date_string = null)
+    public static function createJournal($date_string = null)
     {
         /** @var \Carbon\Carbon $date */
         if ($date_string) {
@@ -420,6 +424,8 @@ class Concept extends Model {
                 'owner_id' => Auth::id(),
                 'body' => $nav . "\n\n",
                 'type' => 'journal',
+                'language' => 'de',
+                'status' => 'private',
             ]);
         }
 
@@ -434,3 +440,4 @@ class Concept extends Model {
         )->orderBy('is_default', 'desc');
     }
 }
+

@@ -1,1 +1,0 @@
-../../../../../vendor/mpociot/versionable/src/migrations/2014_09_27_212641_create_versions_table.php
